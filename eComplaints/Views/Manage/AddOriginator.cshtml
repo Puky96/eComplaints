@@ -1,0 +1,38 @@
+﻿@model eComplaints.Models.ManageViewModels.AddOriginatorModel
+
+@{
+    ViewData["Title"] = "AddOriginator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Adauga Originator</h2>
+
+<form asp-action="AddOriginator">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <label class="text-danger">@ViewBag.Message</label>
+        <div class="form-group">
+            <label asp-for="OriginatorName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="OriginatorName" class="form-control" />
+                <span asp-validation-for="OriginatorName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Adauga Originator" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

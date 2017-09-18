@@ -1,0 +1,162 @@
+﻿@model eComplaints.Models.ReportViewModels.MDisplayReport
+
+@{
+    ViewData["Title"] = "ReportDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h2>ReportDetails</h2>
+        </div>
+        <div class="panel panel-body">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </dt>
+                    <dd>
+                        <a href="@Url.Content(Model.ImagePath)">
+                            <img src="@Url.Content(Model.ImagePath)" width="900px" height="672px" />
+                        </a>
+                    </dd>
+                    @if (Model.ImagePath1 != null)
+                    {
+                        <br />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ImagePath1)
+                        </dt>
+                        <dd>
+                            <img src="@Url.Content(Model.ImagePath1)" width="900px" height="672px" />
+                        </dd>
+                    }
+                    @if (Model.ImagePath2 != null)
+                    {
+                        <br />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ImagePath2)
+                        </dt>
+                        <dd>
+                            <img src="@Url.Content(Model.ImagePath2)" width="900px" height="672px" />
+                        </dd>
+                    }
+                    <br />
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EtiqueteImage)
+                    </dt>
+                    <dd>
+                        <img src="@Url.Content(Model.EtiqueteImage)" width="900px" height="672px" />
+                    </dd>
+                    <br />
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Originator)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Originator)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Line)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Line)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LineCoordinator)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LineCoordinator)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Equipment)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Equipment)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateHour)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DateHour)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GCAS)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GCAS)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BatchSAP)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BatchSAP)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PO)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PO)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DownTime)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DownTime)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumberOfStops)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumberOfStops)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HasSample)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.HasSample)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BlockedBatch)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.BlockedBatch)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhenomenaCategory)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PhenomenaCategory)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Problem)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Problem)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="panel panel-footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                        <a class="btn btn-lg btn-success" href="@Url.Action("FinalReport","Report",new { reportId = ViewBag.ReportId})">Aproba</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("DismissReport","Report",new { reportId = ViewBag.ReportId})">Respinge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

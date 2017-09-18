@@ -1,0 +1,35 @@
+@model IEnumerable<eComplaints.Models.ManageViewModels.ViewInvestigatorItem>
+
+@{
+    ViewData["Title"] = "ViewOriginators";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<p>
+    <a asp-action="AddOriginator">Adauga Originator</a>
+</p>
+
+<br />
+@(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.Username).Titled("Username").Filterable(true);
+                columns.Add(model => model.Department).Titled("Departament").Filterable(true);
+                columns.Add(model => Html.ActionLink("Sterge", "DeleteOriginator", new { originatorId = model.Id })).Titled("Sterge");
+            })
+            .Sortable()
+            .Empty("Nu exista originatori adaugati!")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.CurrentPage = 1;
+            })
+
+)
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/MvcGrid/mvc-grid.js"></script>
+
+<script>
+    $('.mvc-grid').mvcgrid();
+</script>

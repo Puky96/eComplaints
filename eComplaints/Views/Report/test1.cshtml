@@ -1,0 +1,23 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div>
+    <label>Search:</label>
+    <input class="grid-search" />
+</div>
+<br />
+
+@Html.AjaxGrid(Url.Action("IndexGrid"))
+
+<script>
+    $('.mvc-grid').mvcgrid();
+
+    $(document).on('keyup', '.grid-search', function () {
+        $('.mvc-grid').mvcgrid({
+            query: 'search=' + this.value,
+            reload: true
+        });
+    });
+</script>

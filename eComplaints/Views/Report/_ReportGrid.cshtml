@@ -1,0 +1,22 @@
+﻿@model IEnumerable<eComplaints.Models.ReportViewModels.ReportListItem>
+
+@(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.IdentitficationNumber).Titled("Id").Filterable(true);
+                columns.Add(model => Html.ActionLink("Detalii", "TrackingDetails", "Report", new { reportId = model.ReportId })).Titled("Vezi detalii");
+                columns.Add(model => model.PhenomenaCategory).Titled("Material").Filterable(true);
+                columns.Add(model => model.Problem).Titled("Problema").Filterable(true);
+                columns.Add(model => model.IssuedDate).Titled("Data aparitie").Filterable(true);
+                columns.Add(model => model.Supplier).Titled("Supplier").Filterable(true);
+                columns.Add(model => model.IsRelevant).Titled("Relevanta").Filterable(true);
+            })
+            .Sortable()
+            .Empty("Adaugati parametri in cautarea de mai sus!")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.CurrentPage = 1;
+            })
+)
+

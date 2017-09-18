@@ -1,0 +1,35 @@
+﻿@model IEnumerable<eComplaints.Models.ManageViewModels.LineCoordinatorItem>
+
+@{
+    ViewData["Title"] = "ViewLineCoordinators";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<p>
+    <a asp-action="AddLineCoordinator">Adauga Coordonator de Linie</a>
+</p>
+
+<br />
+@(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.LineCoordinatorName).Titled("Nume").Filterable(true);
+                columns.Add(model => model.Area).Titled("Linie").Filterable(true);
+                columns.Add(model => Html.ActionLink("Editeaza", "EditLineCoordinator", new { lineCoordinator = model.Id })).Titled("Editeaza");
+            })
+            .Sortable()
+            .Empty("Nu exista coordonatori adaugati!")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.CurrentPage = 1;
+            })
+
+)
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/MvcGrid/mvc-grid.js"></script>
+
+<script>
+    $('.mvc-grid').mvcgrid();
+</script>

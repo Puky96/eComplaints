@@ -1,0 +1,35 @@
+﻿@model IEnumerable<eComplaints.Models.ReportViewModels.InvestigatorListItem>
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.IdentificationNumber).Titled("Plangere").Filterable(true);
+                columns.Add(model => model.Date).Titled("Data").RenderedAs(model => model.Date.ToString("dd.MM.yyyy")).Filterable(true);
+                columns.Add(model => model.Line).Titled("Linie").Filterable(true);
+                columns.Add(model => model.PhenomenaCategory).Titled("Material").Filterable(true);
+                columns.Add(model => model.Problem).Titled("Problema").Filterable(true);
+                columns.Add(model => model.ReportId).RenderedAs(model => "<a href=\"/Report/GenerateReport?reportId=" + model.ReportId + "&lang=ro\">RO</a> | <a href=\"/Report/GenerateReport?reportId=" + model.ReportId + "&lang=en\">EN</a>").Titled("Document").Encoded(false);
+                columns.Add(model => model.TrackingStatus).Titled("Status").Filterable(true);
+                columns.Add(model => Html.ActionLink("Edit", "EditTracking", "Report", new { reportId = model.ReportId })).Titled("Opt");
+                
+            })
+            .Sortable()
+            .Empty("Nu exista plangeri in Tracking!")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.CurrentPage = 1;
+            })
+
+    )
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/MvcGrid/mvc-grid.js"></script>
+
+<script>
+    $('.mvc-grid').mvcgrid();
+</script>

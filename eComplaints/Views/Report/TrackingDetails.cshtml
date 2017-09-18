@@ -1,0 +1,180 @@
+﻿@model eComplaints.Models.ReportViewModels.TrackingDetailsViewModel
+
+@{
+    ViewData["Title"] = "TrackingDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table-info dt {
+        width: 250px;
+        padding-right: 30px;
+        margin-right: 30px;
+    }
+</style>
+
+<br />
+@Html.ActionLink("Vezi detalii plangere", "ReportDetails", "Report", new { reportId = Model.ReportId})
+<br />
+<div class="table-info">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentificationNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdentificationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Issue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Issue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Repeated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Repeated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chronic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chronic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaterialType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Supplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintConfirmed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintConfirmed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BrandSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GCAS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GCAS)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LotProductionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LotProductionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Line)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Line)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialBlocked)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaterialBlocked)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantityBlocked)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuantityBlocked)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BlockedMaterialDecision)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BlockedMaterialDecision)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaimedDT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClaimedDT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClaimedNrOfStops)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ClaimedNrOfStops)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmedDT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmedDT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmedNrOfStops)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmedNrOfStops)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionsForClosing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ActionsForClosing)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Objects)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objects)
+        </dd>
+    </dl>
+</div>
+<br />
+@Html.ActionLink("Inapoi","ReportCreator","Report")

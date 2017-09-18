@@ -1,0 +1,36 @@
+﻿@model IEnumerable<eComplaints.Models.ReportViewModels.InvestigatorListItem>
+
+@{
+    ViewData["Title"] = "Investigator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.IdentificationNumber).Titled("Plangere").Filterable(true);
+                columns.Add(model => model.Date).Titled("Data").Filterable(true);
+                columns.Add(model => model.Line).Titled("Linie").Filterable(true);
+                columns.Add(model => model.PhenomenaCategory).Titled("Material").Filterable(true);
+                columns.Add(model => model.Problem).Titled("Problema").Filterable(true);
+                columns.Add(model => Html.ActionLink("Vezi detalii", "ReportDetails", new { reportId = model.ReportId })).Titled("Detalii");
+            })
+            .Sortable()
+            .Empty("Nu exista plangeri noi!")
+            .Pageable(pager =>
+            {
+                pager.RowsPerPage = 10;
+                pager.CurrentPage = 1;
+            })
+
+)
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/MvcGrid/mvc-grid.js"></script>
+
+<script>
+    $('.mvc-grid').mvcgrid();
+</script>
+
+

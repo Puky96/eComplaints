@@ -1,0 +1,268 @@
+﻿@model eComplaints.Models.ReportViewModels.MInvestigatorReport
+
+@{
+    ViewData["Title"] = "FinalReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="FinalReport">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h4>Informatii Tracking</h4>
+                    </div>
+                    <div class="panel panel-body">
+                        <div class="row">
+                            <div class="panel panel-info">
+                                <div class="panel panel-heading">
+                                    <h5>Detalii Lot</h5>
+                                </div>
+                                <div class="panel panel-body">
+                                    <div class="form-group">
+                                        <label asp-for="Brand" class="control-label"></label>
+                                        <select asp-for="Brand" class="form-control" asp-items="@ViewBag.Brands">
+                                            <option disabled selected>-----SELECT-----</option>
+                                        </select>
+                                        <span asp-validation-for="Brand" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Size" class="control-label"></label>
+                                        <select asp-for="Size" class="form-control" asp-items="@ViewBag.Size">
+                                            <option disabled selected>-----SELECT-----</option>
+                                        </select>
+                                        <span asp-validation-for="Size" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="LotProductionDate" class="control-label"></label>
+                                        <div class="input-group date" data-provider="datepicker">
+                                            <input asp-for="LotProductionDate" type="text" class="form-control" />
+                                            <div class="input-group-addon glyphicon glyphicon-th"></div>
+                                        </div>
+                                        <span asp-validation-for="LotProductionDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Issue" class="control-label"></label>
+                                        <input asp-for="Issue" class="form-control" />
+                                        <span asp-validation-for="Issue" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-info">
+                                <div class="panel panel-heading">
+                                    <h5>Tracking Info</h5>
+                                </div>
+                                <div class="panel panel-body">
+                                    <div class="form-group">
+                                        <label asp-for="Status" class="control-label"></label>
+                                        <select asp-for="Status" class="form-control" asp-items="@ViewBag.Status">
+                                            <option disabled selected>-----SELECT-----</option>
+                                        </select>
+                                        <span asp-validation-for="Status" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="DueDate" class="control-label"></label>
+                                        <div class="input-group date" data-provider="datepicker">
+                                            <input asp-for="DueDate" type="text" class="form-control" />
+                                            <div class="input-group-addon glyphicon glyphicon-th"></div>
+                                        </div>
+                                        <span asp-validation-for="DueDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="RepeatedIssue" /> @Html.DisplayNameFor(model => model.RepeatedIssue)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="Chronic" /> @Html.DisplayNameFor(model => model.Chronic)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Supplier" class="control-label"></label>
+                                        <select asp-for="Supplier" class="form-control" asp-items="@ViewBag.Supplier">
+                                            <option disabled selected>-----SELECT-----</option>
+                                        </select>
+                                        <span asp-validation-for="Supplier" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-info">
+                                <div class="panel panel-heading">
+                                    <h5>Confirmed Downtime</h5>
+                                </div>
+                                <div class="panel panel-body">
+                                    <div class="form-group">
+                                        <label asp-for="Hours" class="control-label"></label>
+                                        <input asp-for="Hours" class="form-control" />
+                                        <span asp-validation-for="Hours" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Minutes" class="control-label"></label>
+                                        <input asp-for="Minutes" class="form-control" />
+                                        <span asp-validation-for="Minutes" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seconds" class="control-label"></label>
+                                        <input asp-for="Seconds" class="form-control" />
+                                        <span asp-validation-for="Seconds" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ConfirmedStops" class="control-label"></label>
+                                        <input asp-for="ConfirmedStops" class="form-control" />
+                                        <span asp-validation-for="ConfirmedStops" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Comments" class="control-label"></label>
+                            <textarea cols="50" rows="4" asp-for="Comments" class="form-control"></textarea>
+                            <span asp-validation-for="Comments" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h4>Pasul 2 (Investigator)</h4>
+                    </div>
+                    <div class="panel panel-body">
+                        @Html.HiddenFor(model => model.ReportId)
+                        <div class="form-group row">
+                            <label asp-for="PhenomenaCategory" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select type="number" asp-for="PhenomenaCategory" class="form-control" asp-items="@ViewBag.CategoryList">
+                                    <option disabled selected>--- SELECT ---</option>
+                                </select>
+                                <span asp-validation-for="PhenomenaCategory" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label asp-for="QuestionName" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <select type="number" asp-for="QuestionName" class="form-control">
+                                    <option disabled selected>--- SELECT ---</option>
+                                </select>
+                                <span asp-validation-for="QuestionName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <a class="col-md-offset-3" id="showAdditional">Alta problema</a>
+                        </div>
+                        <div class="row col-md-12 col-md-offset-2" id="block-additional">
+                            <div class="row form-group">
+                                <label asp-for="AdditionalProblem" class="col-md-3 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="AdditionalProblem" class="form-control" />
+                                    <span asp-validation-for="AdditionalProblem" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label asp-for="AdditionalProblemEnglish" class="col-md-6 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="AdditionalProblemEnglish" class="form-control" />
+                                    <span asp-validation-for="AdditionalProblemEnglish" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row form-group">
+                            <label asp-for="InvestigationDetails" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <textarea asp-for="InvestigationDetails" rows="4" cols="50" class="form-control"></textarea>
+                                <span asp-validation-for="InvestigationDetails" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label asp-for="VendorBatch" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="VendorBatch" class="form-control"></input>
+                                <span asp-validation-for="VendorBatch" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label asp-for="BatchSAP" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="BatchSAP" class="form-control"></input>
+                                <span asp-validation-for="BatchSAP" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <label asp-for="BatchNo" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="BatchNo" class="form-control"></input>
+                                <span asp-validation-for="BatchNo" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adauga in Tracking" class="btn btn-success btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#block-additional").hide();
+
+        var categoryId = $('#PhenomenaCategory').val();
+
+        $.get("/Report/RetrieveQuestions", { categoryId: categoryId }, function (data) {
+            $("#QuestionName").empty();
+            $.each(data, function (index, row) {
+                $("#QuestionName").append("<option value ='" + row.id + "'>" + row.questionName + "</option>")
+            })
+        })
+
+        $("#PhenomenaCategory").change(function () {
+            $.get("/Report/RetrieveQuestions", { categoryId: $("#PhenomenaCategory").val() }, function (data) {
+                $("#QuestionName").empty();
+                $.each(data, function (index, row) {
+                    $("#QuestionName").append("<option value ='" + row.id + "'>" + row.questionName + "</option>")
+                })
+            })
+        });
+
+    })
+
+
+    $("#showAdditional").click(function () {
+        $("#block-additional").show();
+
+    })
+    var today = new Date();
+
+    $('#DueDate').datepicker({
+        startDate: today
+    });
+    $('#LotProductionDate').datepicker();
+</script>

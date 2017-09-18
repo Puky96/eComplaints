@@ -1,0 +1,206 @@
+@model eProjects.Models.ProjectViewModels.AddProjectModel
+
+@{
+    ViewData["Title"] = "AddProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddProject</h2>
+
+<form asp-action="AddProject">
+    <div class="form-horizontal">
+        <h4>AddProjectModel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProjectName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProjectName" class="form-control" />
+                <span asp-validation-for="ProjectName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProjectLeader" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProjectLeader" class="form-control" />
+                <span asp-validation-for="ProjectLeader" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartupLeader" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartupLeader" class="form-control" />
+                <span asp-validation-for="StartupLeader" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Cm" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Cm" class="form-control" />
+                <span asp-validation-for="Cm" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Pcisresource" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Pcisresource" class="form-control" />
+                <span asp-validation-for="Pcisresource" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FiscalYear" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FiscalYear" class="form-control" />
+                <span asp-validation-for="FiscalYear" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="PlantAe" />
+                    <label asp-for="PlantAe"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="TeamCharter" />
+                    <label asp-for="TeamCharter"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Priority" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Priority" class="form-control" />
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Class" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Class" class="form-control" />
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LeadingDepartment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LeadingDepartment" class="form-control" />
+                <span asp-validation-for="LeadingDepartment" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImpactedDepartment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ImpactedDepartment" class="form-control" />
+                <span asp-validation-for="ImpactedDepartment" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ora" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Ora" class="form-control" />
+                <span asp-validation-for="Ora" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FrontEndEngStart" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FrontEndEngStart" class="form-control" />
+                <span asp-validation-for="FrontEndEngStart" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FrontEndEngEnd" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FrontEndEngEnd" class="form-control" />
+                <span asp-validation-for="FrontEndEngEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FundingDateStart" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FundingDateStart" class="form-control" />
+                <span asp-validation-for="FundingDateStart" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FundingDateEnd" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FundingDateEnd" class="form-control" />
+                <span asp-validation-for="FundingDateEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DesignProcureStart" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DesignProcureStart" class="form-control" />
+                <span asp-validation-for="DesignProcureStart" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DesignProcureEnd" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DesignProcureEnd" class="form-control" />
+                <span asp-validation-for="DesignProcureEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConstructionStart" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ConstructionStart" class="form-control" />
+                <span asp-validation-for="ConstructionStart" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConstructionEnd" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ConstructionEnd" class="form-control" />
+                <span asp-validation-for="ConstructionEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Startupstart" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Startupstart" class="form-control" />
+                <span asp-validation-for="Startupstart" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartupEnd" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartupEnd" class="form-control" />
+                <span asp-validation-for="StartupEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comments" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Comments" class="form-control" />
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAQ5OVAET7Sk6Ww4Vbt0yeHQAAAAACAAAAAAADZgAAwAAAABAAAADzBSyAGldrP2lTAigHj/UFAAAAAASAAACgAAAAEAAAAHtEs6s3bO9MI0pfvW7XeGmAAAAAOUHyNXkHjhEW1av4miuBx4tqA4uvgBzs9b6BHKwZsJS83G5iiKzMtW4NaD/grDUVXE2uvnQmjPNRVFB6nGOk46xWrFl8PskIN6sAeiqg1fuBGw+8fSXnwKP3pOgGj/NeKLzlk/EF3xIrVKZj+10WIhNpR2ABpKbt666dYAY6UD4UAAAAyiaBJpzuCgX3GL/VckaRQUHBTDI=</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:ecomplaintsdbserver.database.windows.net,1433;Initial Catalog=eComplaints;User Id=UrlatiPlant@ecomplaintsdbserver;Password=Parola00</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
