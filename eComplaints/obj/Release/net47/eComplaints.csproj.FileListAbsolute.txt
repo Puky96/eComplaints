@@ -341,8 +341,8 @@ C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\bin\Release\net
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.csprojResolveAssemblyReference.cache
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.csproj.eComplaints.exe.config
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.csproj.CoreCompileInputs.cache
-C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\UserSecretsAssemblyInfo.cs
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.AssemblyInfoInputs.cache
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.AssemblyInfo.cs
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.exe
 C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\eComplaints.pdb
+C:\Users\puchianu.m\Documents\ProjectsVS\eComplaints\eComplaints\obj\Release\net47\UserSecretsAssemblyInfo.cs

@@ -9772,6 +9772,7 @@
     ".NETFramework,Version=v4.7": [
       "Microsoft.AspNetCore >= 2.0.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.0.0",
+      "Microsoft.AspNetCore.Diagnostics >= 2.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 2.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 2.0.0",
       "Microsoft.AspNetCore.Mvc >= 2.0.0",
@@ -9874,6 +9875,10 @@
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "suppressParent": "All",
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Microsoft.AspNetCore.Diagnostics": {
             "target": "Package",
             "version": "2.0.0"
           },

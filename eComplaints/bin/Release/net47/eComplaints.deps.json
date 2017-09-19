@@ -25,6 +25,7 @@
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.0.0",
+          "Microsoft.AspNetCore.Diagnostics": "2.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "2.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
           "Microsoft.AspNetCore.Mvc": "2.0.0",
@@ -2180,6 +2181,7 @@
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.0.0",
+          "Microsoft.AspNetCore.Diagnostics": "2.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "2.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
           "Microsoft.AspNetCore.Mvc": "2.0.0",

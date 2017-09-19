@@ -12,6 +12,8 @@ using eComplaints.Data;
 using eComplaints.Models;
 using eComplaints.Services;
 using NonFactors.Mvc.Grid;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace eComplaints
 {
@@ -53,8 +55,19 @@ namespace eComplaints
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole();
+            env.EnvironmentName = EnvironmentName.Production;
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
