@@ -1,0 +1,318 @@
+﻿@model eComplaints.Models.jsReport.jsReport
+@{
+    ViewData["Title"] = "GenerateReport";
+    Layout = null;
+}
+
+<html>
+
+<head>
+    <style>
+        .body {
+            font-family: "Calibri";
+            font-size: large;
+            margin: auto;
+        }
+
+        .logo {
+            float: left;
+        }
+
+        .row {
+            padding-left: 10px;
+        }
+
+        .identity {
+            float: right;
+            padding-right: 20px;
+            font-size: 22px;
+        }
+
+        .table1 {
+            margin-top: 20px;
+        }
+
+            .table1 table,
+            th,
+            td {
+                padding: 5px;
+                padding-left: 2px;
+                border-collapse: collapse;
+            }
+
+            .table1 table {
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+
+                .table1 table .color td {
+                    background: #b5e1f2;
+                }
+
+                .table1 table tr .input {
+                    padding-left: 10px;
+                }
+
+                .table1 table .heading {
+                    background: #a8abaf;
+                    text-align: center;
+                    font-size: 18px;
+                    border: 1px solid black;
+                }
+
+                .table1 table tr .input {
+                    text-align: center;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                }
+
+        label {
+            font-weight: bold;
+        }
+
+        .table1 table tr .lbl {
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            font-weight: bold;
+        }
+
+        .table2 {
+            margin-top: 20px;
+        }
+
+            .table2 table,
+            th,
+            td {
+                padding: 5px;
+                padding-left: 2px;
+                border-collapse: collapse;
+            }
+
+            .table2 table {
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+
+                .table2 table .color td {
+                    background: #b5e1f2;
+                }
+
+                .table2 table tr .input {
+                    padding-left: 10px;
+                }
+
+                .table2 table .heading {
+                    background: #a8abaf;
+                    text-align: center;
+                    font-size: 18px;
+                    border: 1px solid black;
+                }
+
+                .table2 table tr .input {
+                    text-align: center;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                }
+
+                .table2 table tr .lbl {
+                    border-left: 1px solid black;
+                    border-bottom: 1px solid black;
+                    font-weight: bold;
+                }
+
+        .table3 table {
+            empty-cells: show;
+        }
+
+        .table3 {
+            margin-top: 20px;
+        }
+
+            .table3 table,
+            th,
+            td {
+                padding: 5px;
+                padding-left: 2px;
+                border-collapse: collapse;
+            }
+
+            .table3 table {
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+                .table3 table .color td {
+                    background: #b5e1f2;
+                }
+
+                .table3 table tr .input {
+                    padding-left: 10px;
+                }
+
+                .table3 table .heading {
+                    background: #a8abaf;
+                    text-align: center;
+                    font-size: 18px;
+                    border: 1px solid black;
+                }
+
+                .table3 table tr .input {
+                    text-align: center;
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                }
+
+                .table3 table tr .lbl {
+                    border-left: 1px solid black;
+                    border-bottom: 1px solid black;
+                    font-weight: bold;
+                }
+
+                .table3 table tr td,
+                th {
+                    border: 1px solid black;
+                    height: 50px;
+                }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="logo"><img src="~/images/logo.png" /> URLATI Plant, Romania</div>
+        <div class="identity">MATERIAL COMPLAINT </br>NR: @Model.IdentificationNumber</br>DATE: @Model.DateHour</div>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="row table1">
+        <table>
+            <tr>
+                <td colspan="6" class="heading">Step 1 (filled by Originator)</td>
+            </tr>
+            <tr>
+                <td class="lbl">Originator</td>
+                <td class="input" colspan="2">@Model.Originator</td>
+                <td class="lbl">Date/Hour</td>
+                <td class="input" colspan="2">@Model.DateHour</td>
+            </tr>
+            <tr class="color">
+                <td class="lbl">Line Coordinator</td>
+                <td class="input">@Model.LineCoordinator</td>
+                <td class="lbl">Line</td>
+                <td class="input">@Model.Area</td>
+                <td class="lbl">Equipment</td>
+                <td class="input">@Model.Equipment</td>
+            </tr>
+            <tr>
+                <td class="lbl">GCAS</td>
+                <td class="input" colspan="2">@Model.Gcas</td>
+                <td class="lbl">BatchSAP</td>
+                <td class="input" colspan="2">@Model.BatchSap</td>
+            </tr>
+            <tr class="color">
+                <td class="lbl">VendorBatch</td>
+                <td class="input" colspan="2">@Model.VendorBatch</td>
+                <td class="lbl">PO</td>
+                <td class="input" colspan="2">@Model.Po</td>
+            </tr>
+            <tr>
+                <td class="lbl">DownTime</td>
+                <td class="input">@Model.Downtime</td>
+                <td class="lbl">Nr of Stops</td>
+                <td class="input">@Model.NumberOfStops</td>
+                <td class="lbl">Sample</td>
+                <td class="input">@Model.HasSample</td>
+            </tr>
+            <tr class="color">
+                <td class="lbl">BlockedBatch</td>
+                <td class="input">@Model.BlockedBatch</td>
+                <td class="lbl">BatchNO</td>
+                <td class="input">@Model.BatchNo</td>
+                <td class="lbl">Quantity</td>
+                <td class="input">@Model.Quantity</td>
+            </tr>
+            <tr>
+                <td class="lbl">Material</td>
+                <td class="input" colspan="5">@Model.PhenomenaCategory</td>
+            </tr>
+            <tr class="color">
+                <td class="lbl">Problem</td>
+                <td class="input" colspan="5">@Model.Problem</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row table2">
+        <table>
+            <tr>
+                <td class="heading" colspan="6">Step 2 (filled by Investigator)</td>
+            </tr>
+            <tr>
+                <td class="lbl">Relevant: </td>
+                <td class="input" colspan="5">@Model.IsRelevant</td>
+            </tr>
+            <tr class="color">
+                <td class="lbl">Check if lot affected and block BATCH:</td>
+                <td class="input" colspan="5"></td>
+            </tr>
+            <tr>
+                <td colspan="6" class="lbl" style="border-right: 1px solid black; border-bottom: none">Investigation Details</td>
+            </tr>
+            <tr class="color investigation" style="border-left: 1px solid black">
+                <td rowspan="3" colspan="6" class="input">@Model.PhenomenaDescription</td>
+            </tr>
+        </table>
+    </div>
+    <div class="row" style="margin-bottom:20px">
+        <div style="margin-top:10px; float: left">
+            <h4>Palet label</h4><img src=@Model.EtiqueteImagePath height="300" width="400" />
+        </div>
+        <div style="margin-top:10px; float:right; text-align:left">
+            <h4>Problem picture</h4><img src=@Model.ImagePath height="300" width="400" />
+        </div>
+    </div>
+    <div class="row table3">
+        <table>
+            <tr>
+                <td class="heading" colspan="4">Step 3 (filled by Supplier)</td>
+            </tr>
+            <tr>
+                <th>Action</th>
+                <th>Who</th>
+                <th>When</th>
+                <th>Status</th>
+            </tr>
+            <tr class="color">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="color">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+

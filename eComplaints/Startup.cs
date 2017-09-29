@@ -12,8 +12,9 @@ using eComplaints.Data;
 using eComplaints.Models;
 using eComplaints.Services;
 using NonFactors.Mvc.Grid;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.Extensions.Logging;
+using jsreport.AspNetCore;
+using jsreport.Local;
+using jsreport.Binary;
 
 namespace eComplaints
 {
@@ -44,7 +45,6 @@ namespace eComplaints
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-
             services.ConfigureApplicationCookie(opt => {
                 opt.LoginPath = "/Account/LDAP";
             });
@@ -52,22 +52,17 @@ namespace eComplaints
             services.AddMvc();
             services.AddMvcGrid();
             services.AddNodeServices();
+            services.AddJsReport(new LocalReporting()
+                .UseBinary(JsReportBinary.GetBinary())
+                .Configure(cfg =>
+                    cfg.AllowLocalFilesAccess().BaseUrlAsWorkingDirectory())
+                .AsUtility()
+                .Create());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole();
-            env.EnvironmentName = EnvironmentName.Production;
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/error");
-            }
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

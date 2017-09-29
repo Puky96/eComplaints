@@ -2,6 +2,98 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7": {
+      "jsreport.AspNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.0.0",
+          "Microsoft.AspNetCore.Mvc": "2.0.0",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/jsreport.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/jsreport.AspNetCore.dll": {}
+        }
+      },
+      "jsreport.Binary/1.8.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Compression": "4.3.0",
+          "jsreport.Shared": "1.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net45/jsreport.Binary.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Binary.dll": {}
+        }
+      },
+      "jsreport.Client/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.4.0",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Net.Http": "4.3.2",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.8.3"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/jsreport.Client.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Client.dll": {}
+        }
+      },
+      "jsreport.Local/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "jsreport.Client": "2.0.2",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.8.3"
+        },
+        "compile": {
+          "lib/net45/jsreport.Local.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Local.dll": {}
+        }
+      },
+      "jsreport.Shared/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "jsreport.Types": "1.7.0"
+        },
+        "compile": {
+          "lib/net45/jsreport.Shared.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Shared.dll": {}
+        }
+      },
+      "jsreport.Types/1.8.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/net45/jsreport.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Types.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -1080,19 +1172,6 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -1104,20 +1183,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.2",
-          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.2",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
@@ -1710,10 +1775,10 @@
           "lib/netstandard1.0/_._": {}
         },
         "build": {
-          "build/netstandard2.0/NETStandard.Library.targets": {}
+          "build/netstandard2.0/_._": {}
         }
       },
-      "Newtonsoft.Json/10.0.1": {
+      "Newtonsoft.Json/10.0.3": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -1744,12 +1809,6 @@
         },
         "runtime": {
           "lib/net46/Mvc.Grid.Core.dll": {}
-        }
-      },
-      "NonFactors.Grid.Mvc6/2.1.1": {
-        "type": "package",
-        "dependencies": {
-          "NonFactors.Grid.Core.Mvc6": "[2.1.1]"
         }
       },
       "Novell.Directory.Ldap/2.2.1": {
@@ -2165,6 +2224,33 @@
           "lib/net45/_._": {}
         }
       },
+      "System.Net.Http/4.3.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.X509Certificates": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Net.Http.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.Net.Http.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net46/System.Net.Http.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Numerics.Vectors/4.4.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -2284,6 +2370,25 @@
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Runtime.Numerics/4.3.0": {
@@ -2629,6 +2734,98 @@
       }
     },
     ".NETFramework,Version=v4.7/win7-x86": {
+      "jsreport.AspNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.0.0",
+          "Microsoft.AspNetCore.Mvc": "2.0.0",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/jsreport.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/jsreport.AspNetCore.dll": {}
+        }
+      },
+      "jsreport.Binary/1.8.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Compression": "4.3.0",
+          "jsreport.Shared": "1.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.IO.Compression"
+        ],
+        "compile": {
+          "lib/net45/jsreport.Binary.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Binary.dll": {}
+        }
+      },
+      "jsreport.Client/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.4.0",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Net.Http": "4.3.2",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.8.3"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/jsreport.Client.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Client.dll": {}
+        }
+      },
+      "jsreport.Local/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "jsreport.Client": "2.0.2",
+          "jsreport.Shared": "1.0.1",
+          "jsreport.Types": "1.8.3"
+        },
+        "compile": {
+          "lib/net45/jsreport.Local.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Local.dll": {}
+        }
+      },
+      "jsreport.Shared/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "jsreport.Types": "1.7.0"
+        },
+        "compile": {
+          "lib/net45/jsreport.Shared.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Shared.dll": {}
+        }
+      },
+      "jsreport.Types/1.8.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/net45/jsreport.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/jsreport.Types.dll": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -3676,19 +3873,6 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.2",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -3700,20 +3884,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.2",
-          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.2",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
@@ -4300,10 +4470,10 @@
           "lib/netstandard1.0/_._": {}
         },
         "build": {
-          "build/netstandard2.0/NETStandard.Library.targets": {}
+          "build/netstandard2.0/_._": {}
         }
       },
-      "Newtonsoft.Json/10.0.1": {
+      "Newtonsoft.Json/10.0.3": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -4334,12 +4504,6 @@
         },
         "runtime": {
           "lib/net46/Mvc.Grid.Core.dll": {}
-        }
-      },
-      "NonFactors.Grid.Mvc6/2.1.1": {
-        "type": "package",
-        "dependencies": {
-          "NonFactors.Grid.Core.Mvc6": "[2.1.1]"
         }
       },
       "Novell.Directory.Ldap/2.2.1": {
@@ -4725,6 +4889,23 @@
           "lib/net45/_._": {}
         }
       },
+      "System.Net.Http/4.3.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.X509Certificates": "4.3.0"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Net.Http.dll": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/net46/System.Net.Http.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.4.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -4844,6 +5025,15 @@
         },
         "runtime": {
           "lib/net463/System.Runtime.InteropServices.dll": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.Numerics/4.3.0": {
@@ -5134,6 +5324,78 @@
     }
   },
   "libraries": {
+    "jsreport.AspNetCore/1.0.0": {
+      "sha512": "kmbM3sfZqrXs6no63CM0j5euVnxfTjLC6WxAtV88d2qWgffqbMsTYPMvkoj+ILW2ELj73SbuYu5u9iPvsRB0Yw==",
+      "type": "package",
+      "path": "jsreport.aspnetcore/1.0.0",
+      "files": [
+        "jsreport.aspnetcore.1.0.0.nupkg.sha512",
+        "jsreport.aspnetcore.nuspec",
+        "lib/netstandard2.0/jsreport.AspNetCore.dll",
+        "lib/netstandard2.0/jsreport.AspNetCore.xml"
+      ]
+    },
+    "jsreport.Binary/1.8.2": {
+      "sha512": "SHWFFOvicLE+x2SvdxoC8F86mhwGEc6lDB7eXxyYahyE/rA7M51dyAqaA2nurYsNNLJ/LIwgBpp9ZlB2wrXdSQ==",
+      "type": "package",
+      "path": "jsreport.binary/1.8.2",
+      "files": [
+        "jsreport.binary.1.8.2.nupkg.sha512",
+        "jsreport.binary.nuspec",
+        "lib/net45/jsreport.Binary.dll",
+        "lib/netstandard2.0/jsreport.Binary.dll"
+      ]
+    },
+    "jsreport.Client/2.0.2": {
+      "sha512": "gNwEjZQvjqebxeollbOvZfOIICNRTGd9DxaYiO0zcVEsMZRiyhTGoRjyrajPKUgCO4CoaXlGmFrSkeFgEkj9KA==",
+      "type": "package",
+      "path": "jsreport.client/2.0.2",
+      "files": [
+        "jsreport.client.2.0.2.nupkg.sha512",
+        "jsreport.client.nuspec",
+        "lib/net45/jsreport.Client.dll",
+        "lib/netstandard1.6/jsreport.Client.dll"
+      ]
+    },
+    "jsreport.Local/1.0.2": {
+      "sha512": "JW7pAgksxc4nZWudU/TibD6aSODGy8xA1j0BpA66zSeNx6uOp8X9loy09GIwLRbxHVmyXZWnRhP7WJsE1mY/8g==",
+      "type": "package",
+      "path": "jsreport.local/1.0.2",
+      "files": [
+        "jsreport.local.1.0.2.nupkg.sha512",
+        "jsreport.local.nuspec",
+        "lib/net45/jsreport.Local.dll",
+        "lib/net45/jsreport.Local.xml",
+        "lib/netstandard2.0/jsreport.Local.dll",
+        "lib/netstandard2.0/jsreport.Local.xml"
+      ]
+    },
+    "jsreport.Shared/1.0.1": {
+      "sha512": "z0nlRv+Ym1PdD8fvJoG2vXP+0D9dOAi/sSs6bYTrz2c8HqC4tX9lwWVitFKsfhPiIojMNdY/96dupnhP/46gsQ==",
+      "type": "package",
+      "path": "jsreport.shared/1.0.1",
+      "files": [
+        "jsreport.shared.1.0.1.nupkg.sha512",
+        "jsreport.shared.nuspec",
+        "lib/net45/jsreport.Shared.dll",
+        "lib/net45/jsreport.Shared.xml",
+        "lib/netstandard1.6/jsreport.Shared.dll",
+        "lib/netstandard1.6/jsreport.Shared.xml"
+      ]
+    },
+    "jsreport.Types/1.8.3": {
+      "sha512": "o0tTAMinb/1LqASbSbuTAYwZrcRRwI5o4B7Zt907jIv8wjnj5ErvDad3vqzI1mZKnK+CQwgGF5PMbW5m2pQTGw==",
+      "type": "package",
+      "path": "jsreport.types/1.8.3",
+      "files": [
+        "jsreport.types.1.8.3.nupkg.sha512",
+        "jsreport.types.nuspec",
+        "lib/net45/jsreport.Types.dll",
+        "lib/net45/jsreport.Types.xml",
+        "lib/netstandard1.6/jsreport.Types.dll",
+        "lib/netstandard1.6/jsreport.Types.xml"
+      ]
+    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -6000,19 +6262,6 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational.Design/1.1.2": {
-      "sha512": "pu2Jxndzv3slY6Ch9mdqVfL3AFhH5XzM02Rrnf9h5lKoViprYx1O+nNqT3BxmGrPkYadY9OddG2b9+sUO3Xuzw==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.relational.design/1.1.2",
-      "files": [
-        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
-        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml",
-        "microsoft.entityframeworkcore.relational.design.1.1.2.nupkg.sha512",
-        "microsoft.entityframeworkcore.relational.design.nuspec"
-      ]
-    },
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
       "sha512": "mr+S07kAKXsdu9207w1ek4O1/0+y5925kMYy7gCqu15QpvfVXOLdAR0b9RQfBxmtAJPrYx6/KtfvAg70jm5zUA==",
       "type": "package",
@@ -6022,19 +6271,6 @@
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
         "microsoft.entityframeworkcore.sqlserver.2.0.0.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.2": {
-      "sha512": "OmFK0Qr2saaQNjz4ilp0f5mYQ1ORvtAjaU+H/TQdU4EMcSoaFs2LEebyNLn0hpt452+7x89D9bD3f6J34k7YyQ==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver.design/1.1.2",
-      "files": [
-        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
-        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
-        "microsoft.entityframeworkcore.sqlserver.design.1.1.2.nupkg.sha512",
-        "microsoft.entityframeworkcore.sqlserver.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
@@ -6753,11 +6989,12 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/10.0.1": {
-      "sha512": "ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
+    "Newtonsoft.Json/10.0.3": {
+      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.1",
+      "path": "newtonsoft.json/10.0.3",
       "files": [
+        "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -6770,9 +7007,11 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.1.nupkg.sha512",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
       ]
@@ -6799,21 +7038,6 @@
         "lib/netstandard1.6/Mvc.Grid.Core.dll",
         "nonfactors.grid.core.mvc6.2.1.1.nupkg.sha512",
         "nonfactors.grid.core.mvc6.nuspec"
-      ]
-    },
-    "NonFactors.Grid.Mvc6/2.1.1": {
-      "sha512": "QxIMA7IkFCtDUDtIVxft3E1o+9VgLhtHAK0/SOwo0MWZQYk3xoDiXfLUyh4vuFCrEdnzIsiu8+QZPN+KTmgwGQ==",
-      "type": "package",
-      "path": "nonfactors.grid.mvc6/2.1.1",
-      "files": [
-        "content/Content/MvcGrid/Fonts/GridGlyphs.woff",
-        "content/Content/MvcGrid/mvc-grid.css",
-        "content/Scripts/MvcGrid/mvc-grid.js",
-        "content/Views/Shared/MvcGrid/_AjaxGrid.cshtml",
-        "content/Views/Shared/MvcGrid/_Grid.cshtml",
-        "content/Views/Shared/MvcGrid/_Pager.cshtml",
-        "nonfactors.grid.mvc6.2.1.1.nupkg.sha512",
-        "nonfactors.grid.mvc6.nuspec"
       ]
     },
     "Novell.Directory.Ldap/2.2.1": {
@@ -8159,6 +8383,46 @@
         "system.linq.queryable.nuspec"
       ]
     },
+    "System.Net.Http/4.3.2": {
+      "sha512": "y7hv0o0weI0j0mvEcBOdt1F3CAADiWlcw3e54m8TfYiRmBPDIsHElx8QUPDlY4x6yWXKPGN0Z2TuXCTPgkm5WQ==",
+      "type": "package",
+      "path": "system.net.http/4.3.2",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/Xamarinmac20/_._",
+        "lib/monoandroid10/_._",
+        "lib/monotouch10/_._",
+        "lib/net45/_._",
+        "lib/net46/System.Net.Http.dll",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/Xamarinmac20/_._",
+        "ref/monoandroid10/_._",
+        "ref/monotouch10/_._",
+        "ref/net45/_._",
+        "ref/net46/System.Net.Http.dll",
+        "ref/netcore50/System.Net.Http.dll",
+        "ref/netstandard1.1/System.Net.Http.dll",
+        "ref/netstandard1.3/System.Net.Http.dll",
+        "ref/portable-net45+win8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll",
+        "runtimes/win/lib/net46/System.Net.Http.dll",
+        "runtimes/win/lib/netcore50/System.Net.Http.dll",
+        "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
+        "system.net.http.4.3.2.nupkg.sha512",
+        "system.net.http.nuspec"
+      ]
+    },
     "System.Numerics.Vectors/4.4.0": {
       "sha512": "UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
       "type": "package",
@@ -8757,6 +9021,39 @@
         "ref/xamarinwatchos10/_._",
         "system.runtime.interopservices.4.3.0.nupkg.sha512",
         "system.runtime.interopservices.nuspec"
+      ]
+    },
+    "System.Runtime.InteropServices.RuntimeInformation/4.3.0": {
+      "sha512": "cbz4YJMqRDR7oLeMRbdYv7mYzc++17lNhScCX0goO2XpGWdvAt60CGN+FHdePUEHCe/Jy9jUlvNAiNdM+7jsOw==",
+      "type": "package",
+      "path": "system.runtime.interopservices.runtimeinformation/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/win8/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/wpa81/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/unix/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "system.runtime.interopservices.runtimeinformation.4.3.0.nupkg.sha512",
+        "system.runtime.interopservices.runtimeinformation.nuspec"
       ]
     },
     "System.Runtime.Numerics/4.3.0": {
@@ -9772,7 +10069,6 @@
     ".NETFramework,Version=v4.7": [
       "Microsoft.AspNetCore >= 2.0.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.0.0",
-      "Microsoft.AspNetCore.Diagnostics >= 2.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 2.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 2.0.0",
       "Microsoft.AspNetCore.Mvc >= 2.0.0",
@@ -9781,13 +10077,15 @@
       "Microsoft.AspNetCore.StaticFiles >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 2.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.0",
-      "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.Office.Interop.Outlook >= 15.0.4797.1003",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
-      "NonFactors.Grid.Mvc6 >= 2.1.1",
-      "Novell.Directory.Ldap >= 2.2.1"
+      "NonFactors.Grid.Core.Mvc6 >= 2.1.1",
+      "Novell.Directory.Ldap >= 2.2.1",
+      "jsreport.AspNetCore >= 1.0.0",
+      "jsreport.Binary >= 1.8.2",
+      "jsreport.Local >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -9800,11 +10098,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\eComplaints.csproj",
+      "projectUniqueName": "C:\\Users\\puchianu.m\\source\\repos\\Dubluri\\eComplaints\\eComplaints\\eComplaints.csproj",
       "projectName": "eComplaints",
-      "projectPath": "C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\eComplaints.csproj",
+      "projectPath": "C:\\Users\\puchianu.m\\source\\repos\\Dubluri\\eComplaints\\eComplaints\\eComplaints.csproj",
       "packagesPath": "C:\\Users\\puchianu.m\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\obj\\",
+      "outputPath": "C:\\Users\\puchianu.m\\source\\repos\\Dubluri\\eComplaints\\eComplaints\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9834,10 +10132,6 @@
     "frameworks": {
       "net47": {
         "dependencies": {
-          "NonFactors.Grid.Mvc6": {
-            "target": "Package",
-            "version": "2.1.1"
-          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "2.0.0"
@@ -9849,6 +10143,10 @@
           "Microsoft.AspNetCore.Authentication.Cookies": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "jsreport.AspNetCore": {
+            "target": "Package",
+            "version": "1.0.0"
           },
           "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation": {
             "suppressParent": "All",
@@ -9869,6 +10167,10 @@
             "target": "Package",
             "version": "2.0.0"
           },
+          "jsreport.Binary": {
+            "target": "Package",
+            "version": "1.8.2"
+          },
           "Novell.Directory.Ldap": {
             "target": "Package",
             "version": "2.2.1"
@@ -9878,13 +10180,13 @@
             "target": "Package",
             "version": "2.0.0"
           },
-          "Microsoft.AspNetCore.Diagnostics": {
-            "target": "Package",
-            "version": "2.0.0"
-          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "jsreport.Local": {
+            "target": "Package",
+            "version": "1.0.2"
           },
           "Microsoft.VisualStudio.Web.BrowserLink": {
             "target": "Package",
@@ -9894,10 +10196,6 @@
             "target": "Package",
             "version": "2.0.0"
           },
-          "Microsoft.EntityFrameworkCore.SqlServer.Design": {
-            "target": "Package",
-            "version": "1.1.2"
-          },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "2.0.0"
@@ -9905,6 +10203,10 @@
           "Microsoft.AspNetCore.StaticFiles": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "NonFactors.Grid.Core.Mvc6": {
+            "target": "Package",
+            "version": "2.1.1"
           },
           "Microsoft.Office.Interop.Outlook": {
             "target": "Package",

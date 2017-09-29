@@ -219,6 +219,7 @@
     $(document).ready(function () {
         $.get("/Report/RetrieveEquipment", { areaId: 1 }, function (data) {
             $("#Equipment").empty();
+            $("#Equipment").append("<option selected disabled>-----SELECT-----</option>")
             $.each(data, function (index, row) {
                 $("#Equipment").append("<option value ='" + row.id + "'>" + row.equipmentName + "</option>")
             })
@@ -235,6 +236,7 @@
 
         $.get("/Report/RetrieveQuestions", { categoryId: 1 }, function (data) {
             $("#QuestionName").empty();
+            $("#QuestionName").append("<option selected disabled>-----SELECT-----</option>")
             $.each(data, function (index, row) {
                 $("#QuestionName").append("<option value ='" + row.id + "'>" + row.questionName + "</option>")
             })

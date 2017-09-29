@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net47</TargetFramework>
-    <UserSecretsId>aspnet-eComplaints-0BB5E809-B3EF-4CBD-92DA-AC88FC314BD9</UserSecretsId>
+    <UserSecretsId>aspnet-eComplaints-4B1577BA-24A0-4245-8991-0829653F270B</UserSecretsId>
   </PropertyGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="jsreport.AspNetCore" Version="1.0.0" />
+    <PackageReference Include="jsreport.Binary" Version="1.8.2" />
+    <PackageReference Include="jsreport.Local" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
@@ -18,12 +20,11 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1003" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
-    <PackageReference Include="NonFactors.Grid.Mvc6" Version="2.1.1" />
+    <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="2.1.1" />
     <PackageReference Include="Novell.Directory.Ldap" Version="2.2.1" />
   </ItemGroup>
 
@@ -31,6 +32,10 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\materials\" />
   </ItemGroup>
 
   <ItemGroup>

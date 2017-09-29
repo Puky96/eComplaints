@@ -16,6 +16,7 @@ using eComplaints.Models.jsReport;
 using Microsoft.AspNetCore.NodeServices;
 using Microsoft.EntityFrameworkCore;
 using eComplaints.Services;
+using jsreport.AspNetCore;
 
 namespace eComplaints.Controllers
 {
@@ -194,7 +195,6 @@ namespace eComplaints.Controllers
                         count++;
                 model.IdentificationNumber = "CF" + model.GCAS.ToUpper() + "/" + DateTime.Now.ToString("dd.MM.yyyy") + "/" + count.ToString("00");
 
-
                 Report Report2Upload = new Report
                 {
                     ImagePath = model.ServerPath,
@@ -243,7 +243,7 @@ namespace eComplaints.Controllers
                     emailSender.SendEmail(phenomenaCategory, problem, _userManager.FindByNameAsync(User.Identity.Name).Result.FullName, report.IdentitifcationNumber, emailReceiver, path);
                 }
 
-                return RedirectToAction("Originator", new { message = "Plangere inregistrata cu succes!"});
+                return RedirectToAction("Originator", new { message = "Plangere inregistrata cu succes!" });
             }
             else
                 return View(model);
@@ -414,7 +414,7 @@ namespace eComplaints.Controllers
 
                 return View(new ReportDismissalModel { ReportId = Convert.ToInt32(reportId) });
             }
-                
+
             //{
 
             //}
@@ -642,29 +642,39 @@ namespace eComplaints.Controllers
         [Authorize(Roles = "Investigator")]
         public IActionResult SolvedReports()
         {
-            var fReports = ctx.ReportApproval.ToList();
-            List<InvestigatorListItem> model = new List<InvestigatorListItem>();
-            foreach (var f in fReports)
-            {
-                var report = ctx.Report.FirstOrDefault(x => x.Id == f.ReportId);
-                var qID = ctx.Questions2Reports.FirstOrDefault(x => x.ReportId == report.Id).QuestionId;
-                model.Add(new InvestigatorListItem
-                {
-                    ReportId = report.Id,
-                    IdentificationNumber = report.IdentitifcationNumber,
-                    Date = report.DateHour,
-                    Line = ctx.Area.FirstOrDefault(x => x.Id == report.AreaId).Name,
-                    PhenomenaCategory = ctx.Qcategory.FirstOrDefault(x => x.Id == report.PhenomenaCategory).Name,
-                    Problem = ctx.Question.FirstOrDefault(x => x.Id == qID).Question1,
-                    Approved = f.Approved == true ? "da" : "nu",
-                    TrackingStatus = ctx.Tracking.FirstOrDefault(x => x.ReportId == report.Id).Status
-                });
-            }
+            var userId = _userManager.FindByNameAsync(User.Identity.Name).Result.Id;
+            var department = ctx.Investigator2Department.FirstOrDefault(x => x.InvestigatorId == userId).DepartmentId;
 
-            return View(model.OrderByDescending(x => x.Date));
+            try
+            {
+                var fReports = ctx.ReportApproval.ToList();
+                List<InvestigatorListItem> model = new List<InvestigatorListItem>();
+                foreach (var f in fReports)
+                {
+                    var report = ctx.Report.FirstOrDefault(x => x.Id == f.ReportId && x.DepartmentId == department);
+                    var qID = ctx.Questions2Reports.FirstOrDefault(x => x.ReportId == report.Id).QuestionId;
+                    model.Add(new InvestigatorListItem
+                    {
+                        ReportId = report.Id,
+                        IdentificationNumber = report.IdentitifcationNumber,
+                        Date = report.DateHour,
+                        Line = ctx.Area.FirstOrDefault(x => x.Id == report.AreaId).Name,
+                        PhenomenaCategory = ctx.Qcategory.FirstOrDefault(x => x.Id == report.PhenomenaCategory).Name,
+                        Problem = ctx.Question.FirstOrDefault(x => x.Id == qID).Question1,
+                        Approved = f.Approved == true ? "da" : "nu",
+                        TrackingStatus = ctx.Tracking.FirstOrDefault(x => x.ReportId == report.Id).Status
+                    });
+                }
+
+                return View(model.OrderByDescending(x => x.Date));
+            }
+            catch(Exception e)
+            {
+                return View(new List<InvestigatorListItem>());
+            }
         }
 
-        public JsonResult RetrieveReportInformationRo(int reportId)
+        public jsReport RetrieveReportInformationRo(int reportId)
         {
             var report = ctx.Report.FirstOrDefault(rep => rep.Id == reportId);
             jsReport report2Send = new jsReport
@@ -697,10 +707,10 @@ namespace eComplaints.Controllers
 
             report2Send.PhenomenaDescription = ctx.ReportApproval.FirstOrDefault(x => x.ReportId == report.Id).Reason;
 
-            return Json(report2Send);
+            return report2Send;
         }
 
-        public JsonResult RetrieveReportInformationEn(int reportId)
+        public jsReport RetrieveReportInformationEn(int reportId)
         {
             var report = ctx.Report.FirstOrDefault(rep => rep.Id == reportId);
             jsReport report2Send = new jsReport
@@ -717,7 +727,7 @@ namespace eComplaints.Controllers
                 VendorBatch = report.VendorBatch ?? "-",
                 Po = report.Po,
                 Downtime = report.DownTime,
-                IsRelevant = ctx.ReportApproval.FirstOrDefault(x => x.ReportId == report.Id).Approved == true ? "da" : "nu",
+                IsRelevant = ctx.ReportApproval.FirstOrDefault(x => x.ReportId == report.Id).Approved == true ? "yes" : "no",
                 NumberOfStops = report.NumberOfStops,
                 HasSample = report.Sample == true ? "yes" : "no",
                 BlockedBatch = report.BlockedBatch == true ? "yes" : "no",
@@ -733,65 +743,112 @@ namespace eComplaints.Controllers
 
             report2Send.PhenomenaDescription = ctx.ReportApproval.FirstOrDefault(x => x.ReportId == report.Id).Reason;
 
-            return Json(report2Send);
+            return report2Send;
         }
 
-        public async Task<IActionResult> GenerateReport([FromServices] INodeServices nodeServices, int? reportId, string lang = "ro")
+        //public async Task<IActionResult> GenerateReport([FromServices] INodeServices nodeServices, int? reportId, string lang = "ro")
+        //{
+        //    //JsonResult data;
+        //    //if (lang == "ro")
+        //    //{
+        //    //    data = RetrieveReportInformationRo(Convert.ToInt32(reportId));
+        //    //}
+        //    //else
+        //    //{
+        //    //    if (lang == "en")
+        //    //        data = RetrieveReportInformationEn(Convert.ToInt32(reportId));
+        //    //    else
+        //    //        return BadRequest();
+        //    //}
+
+
+        //    //try
+        //    //{
+        //    //    byte[] result = new byte[100];
+        //    //    if(lang == "ro")
+        //    //        result = await nodeServices.InvokeAsync<byte[]>("C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\ReportGenerator\\documentGeneratorRo.js", data.Value);
+        //    //    else
+        //    //        result = await nodeServices.InvokeAsync<byte[]>("C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\ReportGenerator\\documentGeneratorEn.js", data.Value);
+
+        //    //    var fileName = "~/uploads/test.pdf";
+        //    //    using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+        //    //    {
+        //    //        fs.Write(result, 0, result.Length);
+        //    //    }
+
+        //    //    return View("Investigator");
+
+        //    //    string filename = @"report.pdf";
+        //    //    HttpContext.Response.Headers.Add("x-filename", filename);
+        //    //    HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "x-filename");
+        //    //    HttpContext.Response.Headers.Add("Content-type", "application/pdf");
+        //    //    HttpContext.Response.Body.Write(result, 0, result.Length);
+        //    //    return new ContentResult();
+        //    //}
+        //    //catch (Exception e)
+        //    //{
+        //    //    Console.WriteLine(e);
+        //    //    return NotFound();
+        //    //}
+
+        //    JsonResult data = RetrieveReportInformationRo(Convert.ToInt32(reportId));
+        //    byte[] result = await nodeServices.InvokeAsync<byte[]>("C:\\Users\\puchianu.m\\Documents\\ProjectsVS\\eComplaints\\eComplaints\\ReportGenerator\\documentGeneratorRo.js", data.Value);
+        //    var fileName = "wwwroot/uploads/test.pdf";
+        //    using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+        //    {
+        //        fs.Write(result, 0, result.Length);
+        //    }
+
+        //    return RedirectToAction("Investigator");
+        //}
+
+        [MiddlewareFilter(typeof(JsReportPipeline))]
+        public IActionResult GenerateReportRo(int? reportId)
         {
-            JsonResult data;
-            if (lang == "ro")
-            {
-                data = RetrieveReportInformationRo(Convert.ToInt32(reportId));
-            }
+            HttpContext.JsReportFeature().Recipe(jsreport.Types.Recipe.PhantomPdf);
+
+            if (reportId == null)
+                return BadRequest();
             else
             {
-                if (lang == "en")
-                    data = RetrieveReportInformationEn(Convert.ToInt32(reportId));
-                else
-                    return BadRequest();
-            }
-               
+                jsReport report = RetrieveReportInformationRo(Convert.ToInt32(reportId));
 
-            try
-            {
-                byte[] result = new byte[100];
-                if(lang == "ro")
-                    result = await nodeServices.InvokeAsync<byte[]>("./ReportGenerator/documentGeneratorRo.js", data.Value);
-                else
-                    result = await nodeServices.InvokeAsync<byte[]>("./ReportGenerator/documentGeneratorEn.js", data.Value);
-
-
-                string filename = @"report.pdf";
-                HttpContext.Response.Headers.Add("x-filename", filename);
-                HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "x-filename");
-                HttpContext.Response.Headers.Add("Content-type", "application/pdf");
-                HttpContext.Response.Body.Write(result, 0, result.Length);
-                return new ContentResult();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return NotFound();
+                return View(report);
             }
         }
 
-        public async Task<FileResult> DownloadTest([FromServices] INodeServices nodeServices, int? reportId, string lang = null)
+        [MiddlewareFilter(typeof(JsReportPipeline))]
+        public IActionResult GenerateReportEn(int? reportId)
         {
-            var data = RetrieveReportInformationRo(Convert.ToInt32(reportId));
+            HttpContext.JsReportFeature().Recipe(jsreport.Types.Recipe.PhantomPdf);
 
-            var result = new byte[100];
-            try
+            if (reportId == null)
+                return BadRequest();
+            else
             {
-                result = await nodeServices.InvokeAsync<byte[]>("./ReportGenerator/documentGeneratorRo.js", data.Value);
-            }
-            catch (Exception e)
-            {
-                result = null;
-            }
-            var filename = "test.pdf";
+                jsReport report = RetrieveReportInformationEn(Convert.ToInt32(reportId));
 
-            return File(result, "application/pdf", filename);
+                return View(report);
+            }
         }
+
+        //public async Task<FileResult> DownloadTest([FromServices] INodeServices nodeServices, int? reportId, string lang = null)
+        //{
+        //    var data = RetrieveReportInformationRo(Convert.ToInt32(reportId));
+
+        //    var result = new byte[100];
+        //    try
+        //    {
+        //        result = await nodeServices.InvokeAsync<byte[]>("./ReportGenerator/documentGeneratorRo.js", data.Value);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        result = null;
+        //    }
+        //    var filename = "test.pdf";
+
+        //    return File(result, "application/pdf", filename);
+        //}
 
         public IActionResult ReportCreator()
         {
@@ -814,7 +871,7 @@ namespace eComplaints.Controllers
             ViewBag.MaterialBlockedCauses = new SelectList(MaterialBlockedDecisions);
 
             var Brand = ctx.Brand.ToList();
-            ViewBag.Brand = new SelectList(Brand,"Id","Name");
+            ViewBag.Brand = new SelectList(Brand, "Id", "Name");
 
             var Size = new List<string>
                 {
@@ -823,7 +880,7 @@ namespace eComplaints.Controllers
             ViewBag.Size = new SelectList(Size);
 
 
-            return View(new ReportCreatorModel { Reports = new List<ReportListItem>()});
+            return View(new ReportCreatorModel { Reports = new List<ReportListItem>() });
         }
 
         [HttpPost]
@@ -866,8 +923,8 @@ namespace eComplaints.Controllers
                     if (report.Gcas != model.GCAS)
                         reports.Remove(report);
 
-            if(model.Status != null)
-                foreach(var report in reports.ToList())
+            if (model.Status != null)
+                foreach (var report in reports.ToList())
                 {
                     var status = ctx.Tracking.FirstOrDefault(x => x.ReportId == report.Id).Status;
                     if (status != model.Status)
@@ -887,14 +944,14 @@ namespace eComplaints.Controllers
                     if (ctx.Tracking.FirstOrDefault(x => x.ReportId == report.Id).Supplier != Convert.ToInt32(model.Suppplier))
                         reports.Remove(report);
 
-            if(model.Brand != null)
-                foreach(var report in reports.ToList())
+            if (model.Brand != null)
+                foreach (var report in reports.ToList())
                 {
                     if (model.Size == null)
                     {
                         if (ctx.Tracking.FirstOrDefault(x => x.ReportId == report.Id).BrandSize.Contains(model.Brand) != true)
                             reports.Remove(report);
-                }
+                    }
                     else
                     {
                         var brandSize = model.Brand + model.Size;
@@ -1067,7 +1124,7 @@ namespace eComplaints.Controllers
                 return PartialView("IndexGrid", list2Send.Where(x => x.IdentificationNumber.Contains(search) || x.Area.Contains(search) || x.DateHour.Contains(search) || x.PhenomenaCategory.Contains(search) || x.Problem.Contains(search) || x.IsRelevant.Contains(search)));
             }
         }
-        
+
         public IActionResult EditTracking(int reportId)
         {
             var report = ctx.Report.FirstOrDefault(x => x.Id == reportId);
@@ -1251,8 +1308,8 @@ namespace eComplaints.Controllers
                     if (report.PhenomenaCategory != issue)
                         reports.Remove(report);
 
-            if(brand != null)
-                if(size != null)
+            if (brand != null)
+                if (size != null)
                 {
                     var brandSize = ctx.Brand.FirstOrDefault(x => x.Id == brand).Name + size;
                     foreach (var report in reports.ToList())
@@ -1291,6 +1348,17 @@ namespace eComplaints.Controllers
 
             return PartialView("_ReportGrid", model);
         }
+
+        [MiddlewareFilter(typeof(JsReportPipeline))]
+        public IActionResult JsReportTest()
+        {
+            ViewBag.Message = "test";
+
+            HttpContext.JsReportFeature().Recipe(jsreport.Types.Recipe.PhantomPdf);
+
+            return View();
+        }
+
 
 
     }

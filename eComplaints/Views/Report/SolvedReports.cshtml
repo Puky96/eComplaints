@@ -12,7 +12,7 @@
                 columns.Add(model => model.Line).Titled("Linie").Filterable(true);
                 columns.Add(model => model.PhenomenaCategory).Titled("Material").Filterable(true);
                 columns.Add(model => model.Problem).Titled("Problema").Filterable(true);
-                columns.Add(model => model.ReportId).RenderedAs(model => "<a href=\"/Report/GenerateReport?reportId=" + model.ReportId + "&lang=ro\">RO</a> | <a href=\"/Report/GenerateReport?reportId=" + model.ReportId + "&lang=en\">EN</a>").Titled("Document").Encoded(false);
+                columns.Add(model => model.ReportId).RenderedAs(model => "<a href=\"/Report/GenerateReportRo?reportId=" + model.ReportId + "\">RO</a> | <a href=\"/Report/GenerateReportEn?reportId=" + model.ReportId + "\">EN</a>").Titled("Document").Encoded(false);
                 columns.Add(model => model.TrackingStatus).Titled("Status").Filterable(true);
                 columns.Add(model => Html.ActionLink("Edit", "EditTracking", "Report", new { reportId = model.ReportId })).Titled("Opt");
                 
